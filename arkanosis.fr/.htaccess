@@ -1,0 +1,8 @@
+SetEnv PHP_VER 5
+RedirectMatch 301 ^/demos/2012/jumelage-meulan/(.*)$ http://jumelage-meulan.org/$1
+AddType application/x-7z-compressed .7z
+
+RewriteEngine On
+RewriteBase /
+RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
