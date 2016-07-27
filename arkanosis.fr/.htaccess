@@ -1,8 +1,13 @@
 SetEnv PHP_VER 5
-RedirectMatch 301 ^/demos/2012/jumelage-meulan/(.*)$ http://jumelage-meulan.org/$1
+RedirectMatch 301 ^/demos/2012/jumelage-meulan/(.*)$ https://jumelage-meulan.org/$1
 AddType application/x-7z-compressed .7z
 
+Header set Strict-Transport-Security "max-age=31536000" env=HTTPS
+
 RewriteEngine On
-RewriteBase /
+
 RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
-RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
