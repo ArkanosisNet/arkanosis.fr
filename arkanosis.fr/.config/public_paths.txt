@@ -1,0 +1,3 @@
+# NB: Changes to public paths are only taken into account when SaltStack is run
+wikidata
+wikipedia
